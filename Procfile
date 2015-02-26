@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/partnersapi -Dhttp.port=$PORT
+web: target/universal/stage/bin/btpartnersapi -Dhttp.port=$PORT
