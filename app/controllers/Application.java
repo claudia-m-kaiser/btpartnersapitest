@@ -45,39 +45,10 @@ public class Application extends Controller {
 
         String parsedWebhook = currService.parseWebhookNotification(bt_signature,bt_payload);
 
-        writeToWebhookLogFile(parsedWebhook);
+        System.out.println(parsedWebhook);
 
         return ok();
     }
-
-    public static void writeToWebhookLogFile(String notification){
-
-        try{
-            String fileSeparator = System.getProperty("file.separator");
-            //Specify the file name and path here
-            File file =new File("logs" + fileSeparator + "webhooks.log");
-
-    	/* This logic is to create the file if the
-    	 * file is not already present
-    	 */
-            if(!file.exists()){
-                file.createNewFile();
-            }
-
-            //Here true is to append the content to file
-            FileWriter fw = new FileWriter(file,true);
-            //BufferedWriter writer give better performance
-            BufferedWriter bw = new BufferedWriter(fw);
-            bw.write(notification);
-            bw.newLine();
-            //Closing BufferedWriter Stream
-            bw.close();
-
-            Logger.info("Data successfully appended at the end of file");
-
-        }catch(IOException ioe){
-            Logger.error("Exception occurred:");
-        }
-    }
+    
 
 }
