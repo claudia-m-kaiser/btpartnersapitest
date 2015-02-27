@@ -3,11 +3,15 @@
 # ~~~~
 
 # Home page
-GET        /                    controllers.Application.index()
+GET         /                    controllers.Application.index()
 
 # Webhooks endpoints
-GET         /webhooks                                    controllers.Application.initialSetup(bt_challenge:String)
-POST        /webhooks                                    controllers.Application.listener()
+GET         /webhooks            controllers.Application.initialSetup(bt_challenge:String)
+GET         /cancel              controllers.Application.cancel()
+GET         /error               controllers.Application.error()
+GET         /redirect            controllers.Application.redirect()
+POST        /webhooks            controllers.Application.listener()
+
 
 # Map static resources from the /public folder to the /assets URL path
-GET        /assets/*file        controllers.Assets.at(path="/public", file)
+GET         /assets/*file        controllers.Assets.at(path="/public", file)

@@ -49,6 +49,17 @@ public class Application extends Controller {
 
         return ok();
     }
-    
+
+    public static Result cancel(){
+        return ok("Partner merchant cancelled");
+    }
+
+    public static Result error(){
+        return ok("Partner merchant error occured");
+    }
+
+    public static Result redirect(){
+        return ok("Partner merchant redirected");
+    }
 
 }
