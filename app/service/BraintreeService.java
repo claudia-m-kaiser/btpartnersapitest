@@ -30,7 +30,17 @@ public class BraintreeService {
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
         String date = dateFormat.format(webhookNotification.getTimestamp().getTime());
 
-        String message = "Date: "+ date + " **** Type: " + webhookNotification.getKind();
+        String message;
+
+        if(webhookNotification.getKind().equals("partner_merchant_connected")){
+            message = "Merchant ID: " + webhookNotification.getPartnerMerchant().getMerchantPublicId()
+                            + " **** Public Key: " + webhookNotification.getPartnerMerchant().getPublicKey()
+                            + " **** Private Key: " + webhookNotification.getPartnerMerchant().getPrivateKey();
+
+        }else {
+
+            message = "Date: " + date + " **** Type: " + webhookNotification.getKind();
+        }
 
         return message;
     }
